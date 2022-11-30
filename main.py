@@ -4,8 +4,6 @@ import cv2
 from character.detect_shape import face_classifi
 from character.skincolor import skin_detect
 from analyze.relationship import user_relationship
-from uer_heatmap.make_heat_map import heatmap_maker
-import io
 import numpy as np
 from PIL import Image
 from pydantic import BaseModel
@@ -45,9 +43,3 @@ async def user_correlation(item:coorperates):
     result = json.dumps(user_relationship(item))
     result = json.loads(result)
     return result
-
-@app.post("/user_heatmap")
-async def user_heatmap(item:coorperates):
-    result_heatmap = json.dumps(heatmap_maker(item))
-    result_heatmap = json.loads(result_heatmap)
-    return result_heatmap
